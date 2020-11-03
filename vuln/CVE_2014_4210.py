@@ -9,7 +9,6 @@
 '''
 
 from lib import *
-import sys
 import requests
 
 

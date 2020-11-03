@@ -1,3 +1,9 @@
+# coding:utf-8
+--trusted-host mirrors.aliyun.com
+--index-url http://mirrors.aliyun.com/pypi/simple/
+# --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+
 python_masscan==0.1.3
 python_docx==0.8.10
 requests==2.21.0

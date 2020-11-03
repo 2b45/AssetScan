@@ -7,9 +7,11 @@
 @Contact : admin@je2se.com
 @WebSite : https://www.je2se.com
 '''
-import nmap
+# import nmap
 from lib import *
 import requests
+requests.packages.urllib3.disable_warnings()
+
 
 def p80(portdic):
     p80list = []
@@ -21,6 +23,7 @@ def p80(portdic):
             p80list.append(iisshort(ip[0]))
     res = list(filter(None, p80list))
     return res
+
 
 def ms15_034(host_list):
     try:
@@ -37,6 +40,7 @@ def ms15_034(host_list):
     except:
         pass
 
+
 def iisshort(host_list):
     try:
         host_list1 = host_list+"/*~1*/.aspx"
@@ -51,6 +55,7 @@ def iisshort(host_list):
     except:
         pass
 
+
 def phpstudy(host_list):
     header ={ "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:49.0) Gecko/20100101 Firefox/49.0",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -61,7 +66,7 @@ def phpstudy(host_list):
                 "Accept-charset": "c3lzdGVtKCdlY2hvIEpFMlNlSnVzdFRydXN0bWUnKSA7",
                 "Upgrade-Insecure-Requests": "1"}
     try:
-        requests.packages.urllib3.disable_warnings()            
+
         a = requests.get("http://" + host_list,headers=header,timeout=5,verify=False)
         if "JE2SeJustTrustme" in a.text:
             print(Vcolors.RED+str(host_list)+'\t存在phpstudy后门~'+Vcolors.ENDC)

@@ -10,6 +10,7 @@
 import nmap
 from lib import *
 
+
 def p21(portdic):
     p21list = []
     for ip in portdic:
@@ -20,6 +21,8 @@ def p21(portdic):
             p21list.append(do_nmap1(ip[0]))
             p21list.append(do_nmap2(ip[0]))        
     return p21list
+
+
 def do_nmap0(host_list):
     print(Vcolors.OKGREEN+str(host_list)+'\tFTP开放，请自行检测是否存在弱口令~'+Vcolors.ENDC)
     a = host_list+":21:FTP端口开放，请自行检测是否存在弱口令"
@@ -38,6 +41,7 @@ def do_nmap(host_list):
     except:
         pass
 
+
 def do_nmap1(host_list):
     nm = nmap.PortScanner()
     b = nm.scan(hosts=host_list, arguments='-p 21 -script ftp-anon.nse')
@@ -50,6 +54,7 @@ def do_nmap1(host_list):
     except:
         pass
 
+
 def do_nmap2(host_list):
     nm = nmap.PortScanner()
     nm.scan(hosts=host_list, arguments='-p 21 -script ftp-proftpd-backdoor.nse')
@@ -61,3 +66,4 @@ def do_nmap2(host_list):
             return a
     except:
         pass
+

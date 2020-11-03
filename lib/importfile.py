@@ -22,12 +22,14 @@ def to_xls(path):
     col_value = xls_sheet.col_values(0)
     return col_value
 
+
 def to_csv(path):
-    csv_file = csv.reader(open(path,'r',encoding='utf-8'))
+    csv_file = csv.reader(open(path, 'r', encoding='utf-8'))
     csvdata = []
     for i in csv_file:
         csvdata.append(i)
     return csvdata
+
 
 def to_txt(path):
     global ipcontent
@@ -38,6 +40,7 @@ def to_txt(path):
         list1 = i.strip()
         txt_file.append(list1)
     return txt_file
+
 
 def importfile(path):
     if "/" in path:

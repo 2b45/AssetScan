@@ -27,7 +27,8 @@ class Request(threading.Thread):
                 break
             ip = self.alive_queue.get()
             self.alive(ip)
-    def alive(self,ip):
+
+    def alive(self, ip):
         if self.livecase =="1":
             try:
                 if os.name == "nt":
@@ -43,6 +44,8 @@ class Request(threading.Thread):
             
 #---------------------分割线--------------------------------------------------
 #通用处理
+
+
 def father(iplist):
     print(Vcolors.OKGREEN+ "正在对目标地址进行存活检测~~"+ Vcolors.ENDC)
     ascii_banner = pyfiglet.figlet_format("AssetScan")
@@ -133,23 +136,17 @@ def resultreport(iplist,alivelist,portdic,vullist):
     if os.path.exists("./file/port.txt"):
         os.remove("./file/port.txt")
 
-#---------------------分割线--------------------------------------------------
 
-#主程序
 if __name__ == "__main__":
     if sys.version_info.major < 3:
         sys.stdout.write(Vcolors.PURPLE + "AssetScan 仅支持Python 3.x版本~\n" + Vcolors.ENDC)
     else:
         import argparse
         import pyfiglet
-        from IPy import IP
-        import telnetlib
-        from script import *
-        from  queue  import Queue
+        from queue import Queue
         from vuln import *
-        import platform
 
-        #重置部分
+        # TODO 重置部分
         if os.path.exists("./file/alive.txt"):
             os.remove("./file/alive.txt")
         if os.path.exists("./file/port.txt"):
@@ -158,12 +155,12 @@ if __name__ == "__main__":
         #头部信息部分
         ascii_banner = pyfiglet.figlet_format("AssetScan")
         print(Vcolors.OKGREEN + ascii_banner+Vcolors.ENDC)
-        print(Vcolors.OKBLUE + "\t\t\t\tPower by JE2Se" +"   "+ Vcolors.RED + "V1.3" +"\n" +Vcolors.ENDC)
+        print(Vcolors.OKBLUE + "\t\t\t\tPower by XX" +"   "+ Vcolors.RED + "V1.3" +"\n" +Vcolors.ENDC)
         parser = argparse.ArgumentParser()
         #脚本执行帮助部分
         print(Vcolors.PURPLE + "\t~请输入 -h 获取命令帮助~" + "\n" + Vcolors.ENDC + Vcolors.OKGREEN)
-        parser.add_argument("-i", "--ip", help = ' -i 参数，指定的IP范围  ~~') 
-        parser.add_argument("-f", "--file", help = ' -f 参数，导入IP地址文件  ~~')
+        parser.add_argument("-i", "--ip", help=' -i 参数，指定的IP范围  ~~')
+        parser.add_argument("-f", "--file", help=' -f 参数，导入IP地址文件  ~~')
         args = parser.parse_args()
         params = vars(args)
         #导入文件处理簇

@@ -7,7 +7,7 @@
 @Contact : admin@je2se.com
 @WebSite : https://www.je2se.com
 '''
-import nmap
+# import nmap
 from lib import *
 
 def p5432(portdic):

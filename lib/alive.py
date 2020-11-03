@@ -16,6 +16,7 @@ import sys
 import re
 from lib.color import Vcolors
 
+
 def unixping(ip):
     try:
         p = subprocess.Popen(["ping -c 1 -W 20 " +ip],stdin = subprocess.PIPE,stdout = subprocess.PIPE,stderr = subprocess.PIPE,shell = True)
@@ -32,9 +33,10 @@ def unixping(ip):
         ipalive.close()
         exit()
 
+
 def winping(ip):
     try:
-        p = subprocess.Popen(['ping','-n','1','-w','20',ip],
+        p = subprocess.Popen(['ping', '-n', '1', '-w','20',ip],
                     stdout=subprocess.PIPE,
                     stdin = subprocess.PIPE,
                     stderr = subprocess.PIPE,

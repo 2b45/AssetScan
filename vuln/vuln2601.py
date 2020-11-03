@@ -7,9 +7,10 @@
 @Contact : admin@je2se.com
 @WebSite : https://www.je2se.com
 '''
-import nmap
+# import nmap
 from lib import *
 import requests
+
 
 def p2601(portdic):
     p2601list = []
@@ -26,7 +27,7 @@ def zebra(host_list):
     try:
         url = "https://"+host_list+":2601/login"
         requests.packages.urllib3.disable_warnings()
-        a = requests.get(url,timeout=5,verify=False)
+        a = requests.get(url, timeout=5,verify=False)
         if a.status_code == 200:
             print(Vcolors.OKGREEN+str(host_list)+'\t识别到Zebra路由，请检测默认口令zebra:zebra~'+Vcolors.ENDC)
             ff = host_list + ":2601:识别到Zebra路由，请检测默认口令zebra:zebra"

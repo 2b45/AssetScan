@@ -15,6 +15,7 @@ from lib.color import Vcolors
 threads = []
 portdict= []
 
+
 def portscanall():
     ipdata = open("./file/alive.txt","r")
     a = ipdata.readlines()
@@ -22,6 +23,7 @@ def portscanall():
         ip = ip.strip("\n")
         portll(ip)
     ipdata.close()
+
 
 def portll(ip):
     setdefaulttimeout(1)
@@ -32,6 +34,7 @@ def portll(ip):
  
     for t in threads:
         t.join()
+
 
 def portScanner(host,port):
     try:
@@ -49,6 +52,8 @@ def portScanner(host,port):
     except:
         pass
     #print(Vcolors.OKGREEN+ "发现端口未开放~\tip地址为:"+host+"\t端口为:"+str(port)+ Vcolors.ENDC)
+
+
 def portscanalll():
     print(Vcolors.OKGREEN+ "正在目标全部端口进行探测扫描~~"+ Vcolors.ENDC)
     portalive=open("./file/port.txt",'a+')
